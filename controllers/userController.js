@@ -57,4 +57,43 @@ async function updateUser(req, res) {
   }
 }
 
-module.exports = { getUser, updateUser };
+async function getAllUsers(req, res) {
+  try {
+    const users = await User.find().select("-password");
+
+    res.status(200).json({ users });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Error getting users", error: err.message });
+  }
+}
+
+async function updateUserRole(req, res) {
+  const userId = req.params.id;
+  const { role } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.role = role;
+    const updatedUser = await user.save();
+
+    const { password, ...userWithoutPassword } = updatedUser.toObject();
+
+    res.status(200).json({
+      message: "User role updated successfully",
+      user: userWithoutPassword,
+    });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Error updating user role", error: err.message });
+  }
+}
+
+module.exports = { getUser, updateUser, getAllUsers, updateUserRole };

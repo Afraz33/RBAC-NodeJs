@@ -61,7 +61,7 @@ async function updateRole(req, res) {
   const updates = req.body;
 
   // Allowed updates check that what needs to be updated for the role, i.e., role name or permissions for the role
-  const allowedUpdates = ["name", "permissions"];
+  const allowedUpdates = ["permissions"];
 
   const isValidUpdate = Object.keys(updates).every((update) =>
     allowedUpdates.includes(update)
@@ -75,11 +75,6 @@ async function updateRole(req, res) {
 
     if (!role) {
       return res.status(404).json({ message: "Role not found" });
-    }
-
-    // Update role name if provided
-    if (updates.name) {
-      role.name = updates.name;
     }
 
     // Update permissions if provided
