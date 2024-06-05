@@ -9,6 +9,7 @@ const cors = require("cors");
 // const permissionRoutes = require("./routes/permissionRoutes");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const userRoutes = require("./routes/userRoutes");
 // Configurations
 dotenv.config();
 const app = express();
@@ -19,8 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Routes
-// app.use("/movies", movieRoutes);
-// app.use("/reviews", reviewRoutes);
+
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
+app.use("/user", userRoutes);
 module.exports = app;
