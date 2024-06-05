@@ -7,8 +7,8 @@ Welcome to our RBAC Backend API project! This project provides a Role-Based Acce
 To get started, clone this repository and install the dependencies:
 
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/Afraz33/RBAC-NodeJs
+cd BXTRACK
 npm install
 ```
 
