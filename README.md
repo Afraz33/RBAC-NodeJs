@@ -8,9 +8,12 @@ To get started, clone this repository and install the dependencies:
 
 ```bash
 git clone https://github.com/Afraz33/RBAC-NodeJs
-cd BXTRACK
+cd RBAC-NodeJs
 npm install
 ```
+
+## Configuration
+Create a .env file, with your credentials by looking up the sample.env file.
 
 ## Usage 
 ```bash
